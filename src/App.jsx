@@ -1,30 +1,21 @@
+import { Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
-import Hero from './components/Hero'
-import DorSection from './components/DorSection'
-import SolucaoSection from './components/SolucaoSection'
-import DemoSecao from './components/DemoSecao'
-import ServicosSection from './components/ServicosSection'
-import ProvaSocial from './components/ProvaSocial'
-import ComoFunciona from './components/ComoFunciona'
-import PlanosSection from './components/PlanosSection'
-import CtaFinal from './components/CtaFinal'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
+import Home from './pages/Home'
+import TourVirtual360 from './pages/TourVirtual360'
+import AgenteIA from './pages/AgenteIA'
 import './App.css'
 
 export default function App() {
   return (
     <>
       <Nav />
-      <Hero />
-      <DorSection />
-      <SolucaoSection />
-      <DemoSecao />
-      <ServicosSection />
-      <ProvaSocial />
-      <ComoFunciona />
-      <PlanosSection />
-      <CtaFinal />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tourvirtual360" element={<TourVirtual360 />} />
+        <Route path="/agente_ia" element={<AgenteIA />} />
+      </Routes>
       <Footer />
       <WhatsAppFloat />
     </>
