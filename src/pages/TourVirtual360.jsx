@@ -10,7 +10,7 @@ import CtaFinal from '../components/CtaFinal'
 
 export default function TourVirtual360() {
   return (
-    <>
+    <main className="page-tour-virtual">
       <Hero />
       <DorSection />
       <SolucaoSection />
@@ -20,6 +20,6 @@ export default function TourVirtual360() {
       <ComoFunciona />
       <PlanosSection />
       <CtaFinal />
-    </>
+    </main>
   )
 }

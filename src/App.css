@@ -1255,3 +1255,12 @@ a {
   padding: 3px 10px;
   border-radius: 6px;
 }
+
+/* ===== TOUR VIRTUAL 360 — CONTRASTE BADGE ===== */
+.page-tour-virtual .hero h1 em,
+.page-tour-virtual .hero p,
+.page-tour-virtual .section-cta-final .cta-final-content p {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 3px 10px;
+  border-radius: 6px;
+}
