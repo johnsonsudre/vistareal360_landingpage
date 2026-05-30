@@ -20,7 +20,7 @@ export default function AgenteIA() {
 function HeroIA() {
   return (
     <section className="hero" aria-label="Hero">
-      <div className="hero-bg" />
+      <div className="hero-bg hero-bg-ia" />
       <div className="hero-overlay" />
       <div className="hero-content">
         <div className="reveal visible">
@@ -300,7 +300,7 @@ function CtaIA() {
 
   return (
     <section className="section-cta-final" aria-label="CTA Final">
-      <div className="cta-final-bg" />
+      <div className="cta-final-bg cta-final-bg-ia" />
       <div className="cta-final-overlay" />
       <div className="cta-final-content">
         <h2 ref={h2Ref} className="reveal">

@@ -1237,3 +1237,12 @@ a {
     padding: 32px 24px;
   }
 }
+
+/* ===== AGENTE IA BG ===== */
+.hero-bg-ia {
+  background-image: url('/images/agente-ia-whatsapp-atendimento-24h.webp') !important;
+}
+
+.cta-final-bg-ia {
+  background-image: url('/images/agente-ia-whatsapp-funcionamento-360.webp') !important;
+}
