@@ -1246,3 +1246,12 @@ a {
 .cta-final-bg-ia {
   background-image: url('/images/agente-ia-whatsapp-funcionamento-360.webp') !important;
 }
+
+/* ===== AGENTE IA — CONTRASTE BADGE ===== */
+.hero-ia h1 em,
+.hero-ia p,
+.cta-ia .cta-final-content p {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 3px 10px;
+  border-radius: 6px;
+}

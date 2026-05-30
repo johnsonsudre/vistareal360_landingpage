@@ -19,7 +19,7 @@ export default function AgenteIA() {
 /* ---- HERO ---- */
 function HeroIA() {
   return (
-    <section className="hero" aria-label="Hero">
+    <section className="hero hero-ia" aria-label="Hero">
       <div className="hero-bg hero-bg-ia" />
       <div className="hero-overlay" />
       <div className="hero-content">
@@ -299,7 +299,7 @@ function CtaIA() {
   const aRef = useReveal()
 
   return (
-    <section className="section-cta-final" aria-label="CTA Final">
+    <section className="section-cta-final cta-ia" aria-label="CTA Final">
       <div className="cta-final-bg cta-final-bg-ia" />
       <div className="cta-final-overlay" />
       <div className="cta-final-content">
