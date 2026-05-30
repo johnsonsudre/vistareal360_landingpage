@@ -19,7 +19,7 @@ export default function AgenteIA() {
 /* ---- HERO ---- */
 function HeroIA() {
   return (
-    <section className="hero hero-ia" aria-label="Hero">
+    <section className="hero" aria-label="Hero">
       <div className="hero-bg hero-bg-ia" />
       <div className="hero-overlay" />
       <div className="hero-content">
@@ -28,9 +28,9 @@ function HeroIA() {
             O lead mandou mensagem agora. <em>Quanto tempo até você responder?</em>
           </h1>
           <p>
-            <span>Corretor que responde primeiro, vende primeiro. Seu Agente de IA no WhatsApp
+            Corretor que responde primeiro, vende primeiro. Seu Agente de IA no WhatsApp
             24 horas por dia — responde em segundos, qualifica compradores e agenda visitas
-            enquanto você foca em fechar negócios.</span>
+            enquanto você foca em fechar negócios.
           </p>
         </div>
         <a
@@ -299,7 +299,7 @@ function CtaIA() {
   const aRef = useReveal()
 
   return (
-    <section className="section-cta-final cta-ia" aria-label="CTA Final">
+    <section className="section-cta-final" aria-label="CTA Final">
       <div className="cta-final-bg cta-final-bg-ia" />
       <div className="cta-final-overlay" />
       <div className="cta-final-content">
@@ -307,7 +307,7 @@ function CtaIA() {
           Enquanto você lê isso, 3 leads estão chamando corretores no WhatsApp. Qual deles vai ser seu?
         </h2>
         <p ref={pRef} className="reveal delay-1">
-          <span>Não perca mais vendas por causa da demora na resposta. Ative seu Agente de IA hoje.</span>
+          Não perca mais vendas por causa da demora na resposta. Ative seu Agente de IA hoje.
         </p>
         <a
           ref={aRef}
