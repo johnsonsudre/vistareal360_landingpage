@@ -66,14 +66,14 @@ html.theme-light {
   --hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
   --home-hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
   --cta-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
-  --hero-p-color: #4a4a5a;
-  --cta-p-color: #4a4a5a;
+  --hero-p-color: #1a1a2e;
+  --cta-p-color: #1a1a2e;
   --hero-badge-bg: rgba(255,255,255,0.85);
   --hero-badge-border: rgba(0,180,200,0.20);
   --nav-scrolled-bg: rgba(255,255,255,0.95);
   --nav-scrolled-border: rgba(0,0,0,0.06);
   --nav-link-hover-bg: rgba(0,0,0,0.04);
-  --badge-bg: rgba(255,255,255,0.85);
+  --badge-bg: transparent;
   --card-border: rgba(0,180,200,0.12);
   --card-border-hover: rgba(0,180,200,0.25);
   --home-card-border: rgba(0,180,200,0.12);

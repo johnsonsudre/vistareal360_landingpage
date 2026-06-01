@@ -28,7 +28,7 @@ export default function Nav() {
       <Link to="/" aria-label="Vista Real 360 - Início">
         <img
           className="nav-logo"
-          src="/images/VISTA REAL 360 - logo.png"
+          src={theme === 'light' ? '/images/VISTA REAL 360 - logo com slogan.png' : '/images/VISTA REAL 360 - logo.png'}
           alt="Vista Real 360"
           loading="lazy"
         />
