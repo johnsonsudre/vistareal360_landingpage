@@ -19,12 +19,81 @@
   --font-display: 'Barlow Condensed', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --font-num: 'Oswald', sans-serif;
+
+  /* themeable hardcoded values */
+  --hero-overlay: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(10,74,94,0.6) 50%, rgba(0,0,0,0.7) 100%);
+  --home-hero-overlay: linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(10,74,94,0.55) 50%, rgba(0,0,0,0.75) 100%);
+  --cta-overlay: linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(10,74,94,0.5) 50%, rgba(0,0,0,0.8) 100%);
+  --hero-p-color: var(--azul-claro);
+  --cta-p-color: var(--azul-claro);
+  --hero-badge-bg: rgba(255,255,255,0.06);
+  --hero-badge-border: rgba(0,180,200,0.25);
+  --nav-scrolled-bg: rgba(10,14,18,0.95);
+  --nav-scrolled-border: rgba(0,180,200,0.1);
+  --nav-link-hover-bg: rgba(255,255,255,0.04);
+  --badge-bg: rgba(0,0,0,0.55);
+  --card-border: rgba(0,180,200,0.08);
+  --card-border-hover: rgba(0,180,200,0.3);
+  --plano-card-border: rgba(0,180,200,0.15);
+  --home-card-border: rgba(0,180,200,0.1);
+  --section-gradient-end: rgba(10,74,94,0.08);
+  --section-gradient-start: rgba(10,74,94,0.06);
+  --solucao-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  --como-step-border: rgba(0,180,200,0.06);
+  --demo-placeholder-sub: rgba(255,255,255,0.35);
+  --demo-placeholder-hover-bg: rgba(0,180,200,0.04);
+  --stats-footnote-color: rgba(255,255,255,0.3);
+  --servico-icon-bg: rgba(0,180,200,0.1);
+  --home-card-icon-bg: rgba(0,180,200,0.08);
+  --tooltip-border: rgba(0,180,200,0.15);
+  --focus-outline-color: var(--text-light);
+  --footer-border-top: rgba(0,180,200,0.06);
+  --footer-copy-border: rgba(255,255,255,0.05);
+  --footer-copy-color: rgba(255,255,255,0.25);
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
   overflow-x: hidden;
+}
+
+html.theme-light {
+  --bg-dark: #f5f7fa;
+  --bg-card: #ffffff;
+  --text-body: #4a4a5a;
+  --text-light: #1a1a2e;
+  --hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
+  --home-hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
+  --cta-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
+  --hero-p-color: #4a4a5a;
+  --cta-p-color: #4a4a5a;
+  --hero-badge-bg: rgba(255,255,255,0.85);
+  --hero-badge-border: rgba(0,180,200,0.20);
+  --nav-scrolled-bg: rgba(255,255,255,0.95);
+  --nav-scrolled-border: rgba(0,0,0,0.06);
+  --nav-link-hover-bg: rgba(0,0,0,0.04);
+  --badge-bg: rgba(255,255,255,0.85);
+  --card-border: rgba(0,180,200,0.12);
+  --card-border-hover: rgba(0,180,200,0.25);
+  --home-card-border: rgba(0,180,200,0.12);
+  --section-gradient-end: rgba(0,180,200,0.03);
+  --section-gradient-start: rgba(0,180,200,0.03);
+  --solucao-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --como-step-border: rgba(0,180,200,0.10);
+  --demo-placeholder-sub: rgba(0,0,0,0.35);
+  --demo-placeholder-hover-bg: rgba(0,180,200,0.06);
+  --stats-footnote-color: rgba(0,0,0,0.3);
+  --servico-icon-bg: rgba(0,180,200,0.08);
+  --home-card-icon-bg: rgba(0,180,200,0.08);
+  --focus-outline-color: #111111;
+  --tooltip-bg: #ffffff;
+  --tooltip-color: #1a1a2e;
+  --tooltip-border: rgba(0,0,0,0.10);
+}
+
+body {
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 body {
@@ -150,7 +219,22 @@ a {
 }
 
 .btn-primary:focus-visible {
-  outline: 2px solid var(--text-light);
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 4px;
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 4px;
+}
+
+.nav-cta:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 4px;
+}
+
+.whatsapp-float:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 4px;
 }
 
@@ -205,7 +289,7 @@ a {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(10,74,94,0.6) 50%, rgba(0,0,0,0.7) 100%);
+  background: var(--hero-overlay);
   z-index: 1;
 }
 
@@ -237,7 +321,7 @@ a {
 
 .hero p {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--azul-claro);
+  color: var(--hero-p-color);
   margin-bottom: 36px;
   max-width: 600px;
   margin-left: auto;
@@ -250,13 +334,13 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(0, 180, 200, 0.25);
+  background: var(--hero-badge-bg);
+  border: 1px solid var(--hero-badge-border);
   backdrop-filter: blur(4px);
   padding: 10px 20px;
   border-radius: 40px;
   font-size: 0.8rem;
-  color: var(--azul-claro);
+  color: var(--hero-p-color);
 }
 
 .hero-badge strong {
@@ -279,9 +363,9 @@ a {
 }
 
 .nav-bar.scrolled {
-  background: rgba(10, 14, 18, 0.95);
+  background: var(--nav-scrolled-bg);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 180, 200, 0.1);
+  border-bottom: 1px solid var(--nav-scrolled-border);
 }
 
 .nav-logo {
@@ -330,15 +414,15 @@ a {
 
 .dor-card {
   background: var(--bg-card);
-  border: 1px solid rgba(0, 180, 200, 0.08);
+  border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 36px 28px;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
 
 .dor-card:hover {
-  border-color: rgba(0, 180, 200, 0.3);
+  border-color: var(--card-border-hover);
   transform: translateY(-4px);
 }
 
@@ -365,7 +449,7 @@ a {
 /* ===== SECTION SOLUCAO ===== */
 .section-solucao {
   padding: 80px 0;
-  background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(10, 74, 94, 0.08) 100%);
+  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--section-gradient-end) 100%);
 }
 
 .solucao-grid {
@@ -380,7 +464,7 @@ a {
 .solucao-image {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  box-shadow: var(--solucao-shadow);
 }
 
 .solucao-benefits {
@@ -449,7 +533,7 @@ a {
 
 .demo-placeholder:hover {
   border-color: var(--laranja);
-  background: rgba(0, 180, 200, 0.04);
+  background: var(--demo-placeholder-hover-bg);
 }
 
 .demo-play-btn {
@@ -489,7 +573,7 @@ a {
 
 .demo-placeholder-sub {
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.35);
+  color: var(--demo-placeholder-sub);
 }
 
 .demo-cta {
@@ -499,7 +583,7 @@ a {
 /* ===== SECTION SERVICOS ===== */
 .section-servicos {
   padding: 80px 0;
-  background: linear-gradient(180deg, rgba(10, 74, 94, 0.06) 0%, var(--bg-dark) 100%);
+  background: linear-gradient(180deg, var(--section-gradient-start) 0%, var(--bg-dark) 100%);
 }
 
 .servicos-grid {
@@ -511,14 +595,14 @@ a {
 
 .servico-card {
   background: var(--bg-card);
-  border: 1px solid rgba(0, 180, 200, 0.08);
+  border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 32px 24px;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .servico-card:hover {
-  border-color: rgba(0, 180, 200, 0.3);
+  border-color: var(--card-border-hover);
   transform: translateY(-4px);
 }
 
@@ -528,7 +612,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 180, 200, 0.1);
+  background: var(--servico-icon-bg);
   border-radius: 10px;
   margin-bottom: 18px;
   color: var(--ciano);
@@ -591,7 +675,7 @@ a {
 .stats-footnote {
   margin-top: 32px;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.3);
+  color: var(--stats-footnote-color);
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -600,7 +684,7 @@ a {
 /* ===== SECTION COMO FUNCIONA ===== */
 .section-como {
   padding: 80px 0;
-  background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(10, 74, 94, 0.06) 100%);
+  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--section-gradient-start) 100%);
 }
 
 .como-timeline {
@@ -616,7 +700,7 @@ a {
   gap: 20px;
   align-items: flex-start;
   padding: 24px 0;
-  border-bottom: 1px solid rgba(0, 180, 200, 0.06);
+  border-bottom: 1px solid var(--como-step-border);
 }
 
 .como-step:last-child {
@@ -750,7 +834,7 @@ a {
 .cta-final-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(10,74,94,0.5) 50%, rgba(0,0,0,0.8) 100%);
+  background: var(--cta-overlay);
   z-index: 1;
 }
 
@@ -772,16 +856,40 @@ a {
 
 .cta-final-content p {
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-  color: var(--azul-claro);
+  color: var(--cta-p-color);
   margin-bottom: 36px;
   line-height: 1.5;
+}
+
+.hero-ia h1 em,
+.hero-ia p,
+.cta-ia .cta-final-content p {
+  background: var(--badge-bg);
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+.page-tour-virtual .hero h1 em,
+.page-tour-virtual .hero p,
+.page-tour-virtual .section-cta-final .cta-final-content p {
+  background: var(--badge-bg);
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+.page-home .home-hero h1 em,
+.page-home .home-hero p,
+.page-home .section-cta-final .cta-final-content p {
+  background: var(--badge-bg);
+  padding: 3px 10px;
+  border-radius: 6px;
 }
 
 /* ===== FOOTER ===== */
 .footer {
   background: var(--preto);
   padding: 60px 20px 32px;
-  border-top: 1px solid rgba(0, 180, 200, 0.06);
+  border-top: 1px solid var(--footer-border-top);
 }
 
 .footer-inner {
@@ -875,9 +983,9 @@ a {
 .footer-copy {
   margin-top: 48px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid var(--footer-copy-border);
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.25);
+  color: var(--footer-copy-color);
   text-align: center;
 }
 
@@ -907,7 +1015,7 @@ a {
 }
 
 .whatsapp-float:focus-visible {
-  outline: 2px solid var(--text-light);
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 4px;
 }
 
@@ -927,18 +1035,59 @@ a {
     right: 72px;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--bg-card);
-    color: var(--text-light);
+    background: var(--tooltip-bg, var(--bg-card));
+    color: var(--tooltip-color, var(--text-light));
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 0.85rem;
     font-family: var(--font-body);
     white-space: nowrap;
-    border: 1px solid rgba(0, 180, 200, 0.15);
+  border: 1px solid var(--plano-card-border);
   }
 }
 
-/* ===== CONTAINER ===== */
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 180, 200, 0.2);
+  background: transparent;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--laranja);
+  color: #fff;
+  border-color: var(--laranja);
+}
+
+/* ===== THEME TRANSITION ===== */
+.nav-bar,
+.hero,
+.home-hero,
+.section-cta-final,
+.section-dor,
+.section-solucao,
+.section-demo,
+.section-servicos,
+.section-prova,
+.section-como,
+.section-planos,
+.home-services,
+.dor-card,
+.servico-card,
+.home-card,
+.plano-card {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
 .container {
   width: 100%;
   max-width: 1200px;
@@ -1109,7 +1258,7 @@ a {
 
 .nav-link:hover {
   color: var(--text-light);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--nav-link-hover-bg);
 }
 
 .nav-link.active {
@@ -1144,7 +1293,7 @@ a {
 .home-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.88) 0%, rgba(10, 74, 94, 0.55) 50%, rgba(0, 0, 0, 0.75) 100%);
+  background: var(--home-hero-overlay);
   z-index: 1;
 }
 
@@ -1171,11 +1320,11 @@ a {
 
 .home-card {
   background: var(--bg-card);
-  border: 1px solid rgba(0, 180, 200, 0.1);
+  border: 1px solid var(--home-card-border);
   border-radius: 16px;
   padding: 44px 36px;
   text-align: center;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .home-card:hover {
@@ -1189,7 +1338,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 180, 200, 0.08);
+  background: var(--home-card-icon-bg);
   border-radius: 18px;
   margin: 0 auto 20px;
   color: var(--ciano);
