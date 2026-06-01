@@ -50,6 +50,12 @@ export default function CtaFinal() {
       ></div>
       <div className="cta-final-overlay"></div>
       <div className="cta-final-content">
+        <img
+          className="hero-logo"
+          src="/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png"
+          alt="Vista Real 360"
+          loading="eager"
+        />
         <h2 ref={h2Ref} className="reveal">
           Enquanto você lê isso, outro corretor já está usando tour virtual para vender mais rápido.
         </h2>

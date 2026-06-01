@@ -309,6 +309,12 @@ function CtaIA() {
       <div className="cta-final-bg cta-final-bg-ia" />
       <div className="cta-final-overlay" />
       <div className="cta-final-content">
+        <img
+          className="hero-logo"
+          src="/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png"
+          alt="Vista Real 360"
+          loading="eager"
+        />
         <h2 ref={h2Ref} className="reveal">
           Enquanto você lê isso, 3 leads estão chamando corretores no WhatsApp. Qual deles vai ser seu?
         </h2>

@@ -111,6 +111,12 @@ export default function Home() {
         <div className="home-cta-bg" />
         <div className="cta-final-overlay" />
         <div className="cta-final-content">
+          <img
+            className="hero-logo"
+            src="/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png"
+            alt="Vista Real 360"
+            loading="eager"
+          />
           <h2 ref={h2Ref} className="reveal">
             Pronto para vender mais rápido com tecnologia inteligente?
           </h2>
