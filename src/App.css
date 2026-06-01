@@ -397,6 +397,10 @@ a {
   font-size: 0.95rem;
   color: var(--text-body);
   line-height: 1.5;
+  border-left: 3px solid transparent;
+  padding-left: 7px;
+  border-radius: 8px;
+  transition: background 0.4s ease, color 0.4s ease, border-left-color 0.4s ease, transform 0.4s ease;
 }
 
 .solucao-benefits li i {
@@ -707,6 +711,10 @@ a {
   gap: 10px;
   font-size: 0.9rem;
   color: var(--text-body);
+  border-left: 3px solid transparent;
+  padding-left: 7px;
+  border-radius: 8px;
+  transition: background 0.4s ease, color 0.4s ease, border-left-color 0.4s ease, transform 0.4s ease;
 }
 
 .plano-features li i {
@@ -1222,6 +1230,10 @@ a {
   font-size: 0.9rem;
   color: var(--text-body);
   line-height: 1.4;
+  border-left: 3px solid transparent;
+  padding-left: 7px;
+  border-radius: 8px;
+  transition: background 0.4s ease, color 0.4s ease, border-left-color 0.4s ease, transform 0.4s ease;
 }
 
 .home-card-bullets li i {
@@ -1233,13 +1245,10 @@ a {
 
 .home-card-bullets li.highlighted {
   background: rgba(240, 112, 32, 0.1);
-  border-radius: 8px;
-  border-left: 3px solid var(--laranja);
-  padding-left: 7px;
+  border-left-color: var(--laranja);
   font-weight: 600;
   color: var(--text-light);
   transform: translateX(3px);
-  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
 }
 
 .home-card-bullets li.highlighted i {
@@ -1249,13 +1258,10 @@ a {
 .solucao-benefits li.highlighted,
 .plano-features li.highlighted {
   background: rgba(240, 112, 32, 0.1);
-  border-radius: 8px;
-  border-left: 3px solid var(--laranja);
-  padding-left: 7px;
+  border-left-color: var(--laranja);
   font-weight: 600;
   color: var(--text-light);
   transform: translateX(3px);
-  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
 }
 
 .solucao-benefits li.highlighted i,
