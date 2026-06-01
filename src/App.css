@@ -303,6 +303,11 @@ a {
 .hero-logo {
   margin: 0 auto 32px;
   max-width: 220px;
+  content: url('/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png');
+}
+
+html.theme-light .hero-logo {
+  content: url('/images/VISTA REAL 360 - logo com slogan.png');
 }
 
 .hero h1 {
