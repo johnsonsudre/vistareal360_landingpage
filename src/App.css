@@ -63,9 +63,9 @@ html.theme-light {
   --bg-card: #ffffff;
   --text-body: #4a4a5a;
   --text-light: #1a1a2e;
-  --hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
+  --hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 25%, rgba(0,180,200,0.08) 25%, rgba(255,255,255,0.85) 25%);
   --home-hero-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
-  --cta-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(0,180,200,0.08) 50%, rgba(255,255,255,0.85) 100%);
+  --cta-overlay: linear-gradient(135deg, rgba(255,255,255,0.88) 25%, rgba(0,180,200,0.08) 25%, rgba(255,255,255,0.85) 25%);
   --hero-p-color: #1a1a2e;
   --cta-p-color: #1a1a2e;
   --hero-badge-bg: rgba(255,255,255,0.85);
@@ -322,6 +322,10 @@ a {
 
 html.theme-light .hero-logo {
   content: url('/images/VISTA REAL 360 - logo com slogan.png');
+}
+
+html.theme-light .page-tour-virtual .hero-logo {
+  content: url('/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png');
 }
 
 .hero h1 {
