@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <main className="page-home">
       {/* HERO */}
-      <section className="home-hero" aria-label="Hero">
+      <section className="hero home-hero" aria-label="Hero">
         <div className="home-hero-bg" />
         <div className="home-hero-overlay" />
         <div className="hero-content">

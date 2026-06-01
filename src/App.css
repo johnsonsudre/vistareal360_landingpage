@@ -781,31 +781,68 @@ a {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 40px;
 }
 
 .footer-logo {
   max-width: 180px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
-.footer-info p {
+.footer-brand-desc {
   font-size: 0.88rem;
   color: var(--text-body);
   line-height: 1.6;
+  max-width: 320px;
 }
 
-.footer-info a {
+.footer-col-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-link {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
   color: var(--ciano);
 }
 
-.footer-info a:hover {
+.footer-contact-item {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.footer-contact-item a {
+  color: var(--ciano);
+  transition: text-decoration 0.3s ease;
+}
+
+.footer-contact-item a:hover {
   text-decoration: underline;
 }
 
 .footer-social {
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .footer-social a {
@@ -828,7 +865,7 @@ a {
 }
 
 .footer-copy {
-  margin-top: 40px;
+  margin-top: 48px;
   padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,0.05);
   font-size: 0.78rem;
@@ -972,7 +1009,7 @@ a {
   }
 
   .footer-inner {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 48px;
   }
 
