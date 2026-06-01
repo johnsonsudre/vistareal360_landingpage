@@ -73,7 +73,7 @@ html.theme-light {
   --nav-scrolled-bg: rgba(255,255,255,0.95);
   --nav-scrolled-border: rgba(0,0,0,0.06);
   --nav-link-hover-bg: rgba(0,0,0,0.04);
-  --badge-bg: transparent;
+  --badge-bg: rgba(255,255,255,0.90);
   --card-border: rgba(0,180,200,0.12);
   --card-border-hover: rgba(0,180,200,0.25);
   --home-card-border: rgba(0,180,200,0.12);
