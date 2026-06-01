@@ -1209,6 +1209,10 @@ html.theme-light .hero-logo {
     display: none;
   }
 
+  .cta-final-content .hero-logo {
+    display: block;
+  }
+
   .hero {
     min-height: 90vh;
     padding: 80px 20px 60px;
