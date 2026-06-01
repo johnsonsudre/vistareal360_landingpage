@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import { useReveal } from '../hooks/useReveal'
+import { useCenterHighlight } from '../hooks/useCenterHighlight'
 
 const WHATSAPP = 'https://wa.me/5527999087595'
 
@@ -29,6 +31,8 @@ const PLANOS = [
 
 export default function PlanosSection() {
   const headerRef = useReveal()
+  const listRefs = [useRef(null), useRef(null)]
+  const highlighted = useCenterHighlight(listRefs)
 
   return (
     <section className="section-planos" id="planos" aria-label="Planos">
@@ -42,7 +46,7 @@ export default function PlanosSection() {
         </div>
         <div className="planos-grid">
           {PLANOS.map((plano, i) => (
-            <PlanoCard key={i} {...plano} delay={i + 1} />
+            <PlanoCard key={i} {...plano} listRef={listRefs[i]} highlightIdx={highlighted[i]} delay={i + 1} />
           ))}
         </div>
       </div>
@@ -50,15 +54,15 @@ export default function PlanosSection() {
   )
 }
 
-function PlanoCard({ title, desc, features, ctaLabel, ariaLabel, delay }) {
+function PlanoCard({ title, desc, features, ctaLabel, ariaLabel, delay, listRef, highlightIdx }) {
   const ref = useReveal()
   return (
     <div ref={ref} className={`plano-card reveal delay-${delay}`}>
       <h3>{title}</h3>
       <p className="plano-desc">{desc}</p>
-      <ul className="plano-features">
+      <ul className="plano-features" ref={listRef}>
         {features.map((feat, i) => (
-          <li key={i}>
+          <li key={i} className={i === highlightIdx ? 'highlighted' : ''}>
             <i className="fas fa-check" aria-hidden="true"></i>
             {feat}
           </li>

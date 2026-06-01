@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import { useReveal } from '../hooks/useReveal'
+import { useCenterHighlight } from '../hooks/useCenterHighlight'
 
 const BENEFICIOS = [
   'O comprador visita o imóvel antes de sair de casa',
@@ -13,6 +15,8 @@ export default function SolucaoSection() {
   const headerRef = useReveal()
   const leftRef = useReveal()
   const rightRef = useReveal()
+  const solucaoListRef = useRef(null)
+  const [highlighted] = useCenterHighlight([solucaoListRef])
 
   return (
     <section className="section-solucao" id="solucao" aria-label="Solução">
@@ -33,9 +37,9 @@ export default function SolucaoSection() {
             />
           </div>
           <div ref={rightRef} className="reveal-right">
-            <ul className="solucao-benefits">
+            <ul className="solucao-benefits" ref={solucaoListRef}>
               {BENEFICIOS.map((text, i) => (
-                <li key={i}>
+                <li key={i} className={i === highlighted ? 'highlighted' : ''}>
                   <i className="fas fa-check-circle" aria-hidden="true"></i>
                   {text}
                 </li>

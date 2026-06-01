@@ -1,5 +1,7 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
+import { useCenterHighlight } from '../hooks/useCenterHighlight'
 
 const WHATSAPP = 'https://wa.me/5527999087595'
 
@@ -9,9 +11,11 @@ const SERVICOS = [
     title: 'Tour Virtual 360°',
     desc: 'Experiências imersivas que vendem antes da visita presencial.',
     bullets: [
-      'Comprador visita o imóvel sem sair de casa',
-      'Filtra curiosos e atrai leads qualificados',
-      'Seu anúncio se destaca em qualquer portal',
+      'Funciona como um plantão de vendas 24 horas — visite o imóvel a qualquer momento pelo celular',
+      'Explore os ambientes no próprio ritmo, observando detalhes e entendendo a distribuição dos espaços',
+      'Compartilhe o tour com quem precisa aprovar a decisão, mesmo estando em outra cidade',
+      'Anúncios com tour virtual recebem até 60% mais visualizações',
+      'Quem agenda uma visita após o tour já conhece o imóvel — visitas mais qualificadas',
     ],
     to: '/tourvirtual360',
   },
@@ -20,9 +24,11 @@ const SERVICOS = [
     title: 'Agente de IA',
     desc: 'Inteligência artificial que atende seus leads no WhatsApp 24h.',
     bullets: [
-      'Responde em segundos, nunca perde um lead',
-      'Qualifica compradores e agenda visitas',
-      'Follow-up automático enquanto você dorme',
+      'Responde no WhatsApp em segundos — seu lead nunca fica esperando, mesmo fora do horário comercial',
+      'Qualifica compradores fazendo perguntas inteligentes e agenda visitas automaticamente',
+      'Faz follow-up automático enquanto você dorme — nenhum lead esfriado por falta de retorno',
+      'Atende no WhatsApp 24h — tire dúvidas sobre o imóvel a qualquer momento, sem fila de espera',
+      'Envia novos imóveis que combinam com seu perfil e agenda visitas sem burocracia',
     ],
     to: '/agente_ia',
   },
@@ -35,8 +41,11 @@ export default function Home() {
   const pRef = useReveal()
   const aRef = useReveal()
 
+  const listRefs = [useRef(null), useRef(null)]
+  const highlighted = useCenterHighlight(listRefs)
+
   return (
-    <>
+    <main className="page-home">
       {/* HERO */}
       <section className="home-hero" aria-label="Hero">
         <div className="home-hero-bg" />
@@ -79,9 +88,9 @@ export default function Home() {
                 </div>
                 <h3>{svc.title}</h3>
                 <p className="home-card-desc">{svc.desc}</p>
-                <ul className="home-card-bullets">
+                <ul className="home-card-bullets" ref={listRefs[i]}>
                   {svc.bullets.map((b, j) => (
-                    <li key={j}>
+                    <li key={j} className={j === highlighted[i] ? 'highlighted' : ''}>
                       <i className="fas fa-check-circle" aria-hidden="true"></i>
                       {b}
                     </li>
@@ -120,6 +129,6 @@ export default function Home() {
           </a>
         </div>
       </section>
-    </>
+    </main>
   )
 }

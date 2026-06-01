@@ -1,10 +1,12 @@
+import { useRef } from 'react'
 import { useReveal } from '../hooks/useReveal'
+import { useCenterHighlight } from '../hooks/useCenterHighlight'
 
 const WHATSAPP = 'https://wa.me/5527999087595'
 
 export default function AgenteIA() {
   return (
-    <>
+    <main className="page-agente-ia">
       <HeroIA />
       <DorIA />
       <SolucaoIA />
@@ -12,7 +14,7 @@ export default function AgenteIA() {
       <ProvaIA />
       <PlanosIA />
       <CtaIA />
-    </>
+    </main>
   )
 }
 
@@ -100,6 +102,8 @@ function DorIA() {
 function SolucaoIA() {
   const headerRef = useReveal()
   const contentRef = useReveal()
+  const solucaoListRef = useRef(null)
+  const [highlighted] = useCenterHighlight([solucaoListRef])
 
   return (
     <section className="section-solucao" aria-label="Solução">
@@ -115,7 +119,7 @@ function SolucaoIA() {
           </p>
         </div>
         <div ref={contentRef} className="reveal">
-          <ul className="solucao-benefits" style={{ maxWidth: 700, marginTop: 32 }}>
+          <ul className="solucao-benefits" style={{ maxWidth: 700, marginTop: 32 }} ref={solucaoListRef}>
             {[
               'Atende seus leads no WhatsApp em segundos, 24 horas por dia',
               'Qualifica compradores (orçamento, prazo, local, financiamento)',
@@ -124,7 +128,7 @@ function SolucaoIA() {
               'Faz follow-up automático — leads nunca mais esfriam',
               'Você nunca mais perde um lead por demora na resposta',
             ].map((text, i) => (
-              <li key={i}>
+              <li key={i} className={i === highlighted ? 'highlighted' : ''}>
                 <i className="fas fa-check-circle" aria-hidden="true"></i>
                 {text}
               </li>
@@ -247,6 +251,8 @@ const PLANOS = [
 
 function PlanosIA() {
   const headerRef = useReveal()
+  const listRefs = [useRef(null), useRef(null)]
+  const highlighted = useCenterHighlight(listRefs)
 
   return (
     <section className="section-planos" aria-label="Planos">
@@ -260,7 +266,7 @@ function PlanosIA() {
         </div>
         <div className="planos-grid">
           {PLANOS.map((plano, i) => (
-            <PlanoCard key={i} {...plano} delay={i + 1} />
+            <PlanoCard key={i} {...plano} listRef={listRefs[i]} highlightIdx={highlighted[i]} delay={i + 1} />
           ))}
         </div>
       </div>
@@ -268,15 +274,15 @@ function PlanosIA() {
   )
 }
 
-function PlanoCard({ title, desc, features, cta, aria, delay }) {
+function PlanoCard({ title, desc, features, cta, aria, delay, listRef, highlightIdx }) {
   const ref = useReveal()
   return (
     <div ref={ref} className={`plano-card reveal delay-${delay}`}>
       <h3>{title}</h3>
       <p className="plano-desc">{desc}</p>
-      <ul className="plano-features">
+      <ul className="plano-features" ref={listRef}>
         {features.map((feat, i) => (
-          <li key={i}>
+          <li key={i} className={i === highlightIdx ? 'highlighted' : ''}>
             <i className="fas fa-check" aria-hidden="true"></i>
             {feat}
           </li>
