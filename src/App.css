@@ -93,6 +93,24 @@ html.theme-light {
   --laranja: #065269;
 }
 
+html.theme-light .hero p,
+html.theme-light .home-hero p,
+html.theme-light .cta-final-content p {
+  color: #1a1a2e;
+  background: rgba(255,255,255,0.90);
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+html.theme-light .hero h1 em,
+html.theme-light .home-hero h1 em {
+  color: #065269;
+  background: rgba(255,255,255,0.90);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-style: normal;
+}
+
 body {
   transition: background-color 0.35s ease, color 0.35s ease;
 }
