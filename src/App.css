@@ -73,7 +73,7 @@ html.theme-light {
   --nav-scrolled-bg: rgba(255,255,255,0.95);
   --nav-scrolled-border: rgba(0,0,0,0.06);
   --nav-link-hover-bg: rgba(0,0,0,0.04);
-  --badge-bg: rgba(255,255,255,0.90);
+  --badge-bg: rgba(255,255,255,0.65);
   --card-border: rgba(0,180,200,0.12);
   --card-border-hover: rgba(0,180,200,0.25);
   --home-card-border: rgba(0,180,200,0.12);
@@ -97,7 +97,7 @@ html.theme-light .hero p,
 html.theme-light .home-hero p,
 html.theme-light .cta-final-content p {
   color: #1a1a2e;
-  background: rgba(255,255,255,0.90);
+  background: rgba(255,255,255,0.65);
   padding: 3px 10px;
   border-radius: 6px;
 }
@@ -105,7 +105,7 @@ html.theme-light .cta-final-content p {
 html.theme-light .hero h1 em,
 html.theme-light .home-hero h1 em {
   color: #065269;
-  background: rgba(255,255,255,0.90);
+  background: rgba(255,255,255,0.65);
   padding: 3px 10px;
   border-radius: 6px;
   font-style: normal;
