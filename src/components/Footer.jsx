@@ -10,8 +10,8 @@ export default function Footer() {
         <div className="footer-brand">
           <img
             className="footer-logo"
-            src="/images/VISTA REAL 360 - logo com slogan.png"
-            alt="Vista Real 360 — Não é imagem, é percepção de valor"
+            src="/images/VISTA REAL 360 - logo.png"
+            alt="Vista Real 360"
             loading="lazy"
           />
           <p className="footer-brand-desc">
