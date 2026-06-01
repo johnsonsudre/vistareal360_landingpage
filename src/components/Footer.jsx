@@ -30,10 +30,6 @@ export default function Footer() {
         <div className="footer-col">
           <span className="footer-col-title">Contato</span>
           <p className="footer-contact-item">
-            Serra – ES<br />
-            Grande Vitória e interior do ES
-          </p>
-          <p className="footer-contact-item">
             <a href={WHATSAPP} target="_blank" rel="noopener" aria-label="WhatsApp (27) 99908-7595">
               <i className="fab fa-whatsapp" aria-hidden="true"></i> (27) 99908-7595
             </a>
