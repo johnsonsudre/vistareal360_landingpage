@@ -1561,33 +1561,6 @@ html.theme-light .hero-logo {
   background: url('/images/agente-ia-whatsapp-funcionamento-360.webp') center center / cover no-repeat;
 }
 
-/* ===== AGENTE IA — CONTRASTE BADGE ===== */
-.hero-ia h1 em,
-.hero-ia p,
-.cta-ia .cta-final-content p {
-  background: rgba(0, 0, 0, 0.55);
-  padding: 3px 10px;
-  border-radius: 6px;
-}
-
-/* ===== TOUR VIRTUAL 360 — CONTRASTE BADGE ===== */
-.page-tour-virtual .hero h1 em,
-.page-tour-virtual .hero p,
-.page-tour-virtual .section-cta-final .cta-final-content p {
-  background: rgba(0, 0, 0, 0.55);
-  padding: 3px 10px;
-  border-radius: 6px;
-}
-
 .page-tour-virtual {
   overflow-x: hidden;
-}
-
-/* ===== HOME — CONTRASTE BADGE ===== */
-.page-home .home-hero h1 em,
-.page-home .home-hero p,
-.page-home .section-cta-final .cta-final-content p {
-  background: rgba(0, 0, 0, 0.55);
-  padding: 3px 10px;
-  border-radius: 6px;
 }
