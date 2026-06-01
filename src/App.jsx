@@ -6,6 +6,7 @@ import WhatsAppFloat from './components/WhatsAppFloat'
 import Home from './pages/Home'
 import TourVirtual360 from './pages/TourVirtual360'
 import AgenteIA from './pages/AgenteIA'
+import TourExemplo from './pages/TourExemplo'
 import './App.css'
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/tourvirtual360" element={<TourVirtual360 />} />
             <Route path="/agente_ia" element={<AgenteIA />} />
+            <Route path="/tour-exemplo" element={<TourExemplo />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
