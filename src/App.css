@@ -90,6 +90,7 @@ html.theme-light {
   --tooltip-bg: #ffffff;
   --tooltip-color: #1a1a2e;
   --tooltip-border: rgba(0,0,0,0.10);
+  --laranja: #065269;
 }
 
 body {
