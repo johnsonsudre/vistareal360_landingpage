@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useScrollNav } from '../hooks/useScrollNav'
-
-const WHATSAPP = 'https://wa.me/5527999087595'
 
 export default function Nav() {
   const scrolled = useScrollNav(60)
+  const location = useLocation()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const [theme, setTheme] = useState(() => {
     try { return localStorage.getItem('theme') || 'dark' } catch { return 'dark' }
@@ -21,25 +21,22 @@ export default function Nav() {
     try { localStorage.setItem('theme', theme) } catch {}
   }, [theme])
 
+  useEffect(() => { setMenuOpen(false) }, [location.pathname])
+
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark')
 
   return (
     <nav className={`nav-bar${scrolled ? ' scrolled' : ''}`} role="navigation" aria-label="Navegação principal">
-      <Link to="/" aria-label="Vista Real 360 - Início">
+      <Link to="/" className="nav-logo-link" aria-label="Vista Real 360 - Início">
         <img
           className="nav-logo"
           src={theme === 'light' ? '/images/VISTA REAL 360 - logo com slogan.png' : '/images/VISTA REAL 360 - logo.png'}
           alt="Vista Real 360"
-          loading="lazy"
+          loading="eager"
         />
       </Link>
-      <div className="nav-links">
-        <NavLink to="/tourvirtual360" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-          Tour 360°
-        </NavLink>
-        <NavLink to="/agente_ia" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-          Agente IA
-        </NavLink>
+
+      <div className="nav-right">
         <button
           className="theme-toggle"
           onClick={toggleTheme}
@@ -47,17 +44,24 @@ export default function Nav() {
         >
           <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
         </button>
+
+        <button
+          className={`hamburger${menuOpen ? ' open' : ''}`}
+          onClick={() => setMenuOpen(p => !p)}
+          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
-      <a
-        href={WHATSAPP}
-        target="_blank"
-        rel="noopener"
-        className="nav-cta"
-        aria-label="Falar no WhatsApp"
-      >
-        <i className="fab fa-whatsapp" aria-hidden="true"></i>
-        Fale conosco
-      </a>
+
+      <div className={`nav-mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
+        <NavLink to="/" end className="nav-link" onClick={() => setMenuOpen(false)}>Início</NavLink>
+        <NavLink to="/tourvirtual360" className="nav-link" onClick={() => setMenuOpen(false)}>Tour Virtual 360°</NavLink>
+        <NavLink to="/agente_ia" className="nav-link" onClick={() => setMenuOpen(false)}>Agente de IA</NavLink>
+      </div>
     </nav>
   )
 }
