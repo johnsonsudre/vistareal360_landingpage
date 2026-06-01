@@ -951,7 +951,7 @@ html.theme-light .hero-logo {
 .footer-social {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 10px;
 }
 
 .footer-social a {
