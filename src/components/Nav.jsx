@@ -42,7 +42,7 @@ export default function Nav() {
           onClick={toggleTheme}
           aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'}
         >
-          <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`} />
+          <i className={`${theme === 'dark' ? 'far fa-sun' : 'fas fa-moon'}`} />
         </button>
 
         <button
