@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
 import { useCenterHighlight } from '../hooks/useCenterHighlight'
+import { useInView } from '../hooks/useInView'
 
 const WHATSAPP = 'https://wa.me/5527999087595'
 
@@ -44,6 +45,9 @@ export default function Home() {
   const listRefs = [useRef(null), useRef(null)]
   const highlighted = useCenterHighlight(listRefs)
 
+  const [tourRef, tourGlow] = useInView({ rootMargin: '-48% 0px -48% 0px' })
+  const [iaRef, iaGlow] = useInView({ rootMargin: '-48% 0px -48% 0px' })
+
   return (
     <main className="page-home">
       {/* HERO */}
@@ -65,11 +69,11 @@ export default function Home() {
             </p>
           </div>
           <div className="home-hero-actions reveal visible delay-1">
-            <Link to="/tourvirtual360" className="btn-primary">
+            <Link to="/tourvirtual360" ref={tourRef} className={`btn-primary${tourGlow ? ' glow' : ''}`}>
               <i className="fas fa-vr-cardboard" aria-hidden="true"></i>
               Tour Virtual 360°
             </Link>
-            <Link to="/agente_ia" className="btn-secondary">
+            <Link to="/agente_ia" ref={iaRef} className={`btn-primary${iaGlow ? ' glow' : ''}`}>
               <i className="fas fa-robot" aria-hidden="true"></i>
               Agente de IA
             </Link>

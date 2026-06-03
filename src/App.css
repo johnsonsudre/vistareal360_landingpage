@@ -242,6 +242,14 @@ a {
   outline-offset: 4px;
 }
 
+.btn-primary.glow {
+  box-shadow: 0 0 0 4px #fff;
+}
+
+.btn-primary.glow:hover {
+  box-shadow: 0 0 0 4px #fff;
+}
+
 .btn-secondary:focus-visible {
   outline: 2px solid var(--focus-outline-color);
   outline-offset: 4px;
@@ -317,22 +325,10 @@ a {
 .hero-logo {
   margin: 0 auto 32px;
   max-width: 220px;
-  content: url('/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png');
-}
-
-html.theme-light .hero-logo {
   content: url('/images/VISTA REAL 360 - logo com slogan.png');
 }
 
-html.theme-light .page-tour-virtual .hero-logo {
-  content: url('/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png');
-}
-
-html.theme-light .page-home .hero-logo {
-  content: url('/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png');
-}
-
-html.theme-light .page-agente-ia .hero-logo {
+html.theme-light .hero-logo {
   content: url('/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png');
 }
 
