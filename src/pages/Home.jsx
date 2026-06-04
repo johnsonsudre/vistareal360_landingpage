@@ -1,10 +1,30 @@
-import { useRef } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
 import { useCenterHighlight } from '../hooks/useCenterHighlight'
 import { useInView } from '../hooks/useInView'
+import { useParallax } from '../hooks/useParallax'
 
 const WHATSAPP = 'https://wa.me/5527999087595'
+
+const HERO_SLIDES = [
+  {
+    h1: <>Tecnologia que transforma visitas em <em>vendas</em></>,
+    p: 'Da captação imersiva ao atendimento inteligente — a Vista Real 360 tem a solução completa para o corretor moderno vender mais e melhor.'
+  },
+  {
+    h1: <>Seu próximo corretor trabalha <em>24 horas por dia</em>.</>,
+    p: 'Tour Virtual 360 + IA que atende clientes, apresenta imóveis compatíveis e agenda visitas automaticamente.'
+  },
+  {
+    h1: <>Transforme visitantes em <em>visitas agendadas</em> automaticamente.</>,
+    p: 'A Vista Real 360 combina Tour Virtual e Inteligência Artificial para qualificar leads, apresentar imóveis e preencher sua agenda.'
+  },
+  {
+    h1: <><em>Venda</em> mais imóveis sem aumentar sua equipe.</>,
+    p: 'Uma IA atende seus clientes, entende suas necessidades, mostra os imóveis ideais e agenda visitas enquanto você fecha negócios.'
+  },
+]
 
 const SERVICOS = [
   {
@@ -48,11 +68,66 @@ export default function Home() {
   const [tourRef, tourGlow] = useInView({ rootMargin: '-48% 0px -48% 0px' })
   const [iaRef, iaGlow] = useInView({ rootMargin: '-48% 0px -48% 0px' })
 
+  const heroBgRef = useParallax({ speed: 0.3, maxOffset: 300 })
+
+  const [activeSlide, setActiveSlide] = useState(0)
+  const [leavingSlide, setLeavingSlide] = useState(null)
+  const buttonsRef = useRef(null)
+  const prevButtonsRect = useRef(null)
+
+  const nextSlide = useCallback(() => {
+    if (buttonsRef.current) {
+      prevButtonsRect.current = buttonsRef.current.getBoundingClientRect()
+    }
+    setLeavingSlide(activeSlide)
+    setActiveSlide(prev => (prev + 1) % HERO_SLIDES.length)
+  }, [activeSlide])
+
+  useEffect(() => {
+    if (leavingSlide !== null) {
+      const id = setTimeout(() => setLeavingSlide(null), 600)
+      return () => clearTimeout(id)
+    }
+  }, [leavingSlide])
+
+  useEffect(() => {
+    const el = buttonsRef.current
+    if (!prevButtonsRect.current || !el) {
+      prevButtonsRect.current = null
+      return
+    }
+    const lastRect = el.getBoundingClientRect()
+    const firstRect = prevButtonsRect.current
+    prevButtonsRect.current = null
+    const dy = firstRect.top - lastRect.top
+    if (dy === 0) return
+    el.style.transform = `translateY(${dy}px)`
+    el.style.transition = 'none'
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.style.transition = 'transform 0.5s ease'
+        el.style.transform = ''
+      })
+    })
+    const handler = () => {
+      el.style.transform = ''
+      el.style.transition = ''
+      el.removeEventListener('transitionend', handler)
+    }
+    el.addEventListener('transitionend', handler)
+  }, [activeSlide])
+
+  useEffect(() => {
+    if (leavingSlide !== null) return
+    const id = setInterval(nextSlide, 8000)
+    return () => clearInterval(id)
+  }, [leavingSlide, nextSlide])
+
   return (
     <main className="page-home">
       {/* HERO */}
       <section className="hero home-hero" aria-label="Hero">
-        <div className="home-hero-bg" />
+        <div ref={heroBgRef} className="home-hero-bg" />
         <div className="home-hero-overlay" />
         <div className="hero-content">
           <img
@@ -61,14 +136,23 @@ export default function Home() {
             alt="Vista Real 360"
             loading="eager"
           />
-          <div ref={heroRef} className="reveal">
-            <h1>Tecnologia que transforma visitas em <em>vendas</em></h1>
-            <p>
-              Da captação imersiva ao atendimento inteligente — a Vista Real 360 tem a solução
-              completa para o corretor moderno vender mais e melhor.
-            </p>
+          <div
+            ref={el => { heroRef.current = el }}
+            className="reveal hero-carousel"
+          >
+            {HERO_SLIDES.map((s, i) => {
+              let cls = 'hero-carousel-slide'
+              if (i === activeSlide) cls += ' active'
+              else if (i === leavingSlide) cls += ' leaving'
+              return (
+                <div key={i} className={cls}>
+                  <h1 className="hero-carousel-h1">{s.h1}</h1>
+                  <p className="hero-carousel-p">{s.p}</p>
+                </div>
+              )
+            })}
           </div>
-          <div className="home-hero-actions reveal visible delay-1">
+          <div ref={buttonsRef} className="home-hero-actions reveal visible delay-1">
             <Link to="/tourvirtual360" ref={tourRef} className={`btn-primary${tourGlow ? ' glow' : ''}`}>
               <i className="fas fa-vr-cardboard" aria-hidden="true"></i>
               Tour Virtual 360°

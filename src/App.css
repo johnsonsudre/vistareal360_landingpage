@@ -90,7 +90,6 @@ html.theme-light {
   --tooltip-bg: #ffffff;
   --tooltip-color: #1a1a2e;
   --tooltip-border: rgba(0,0,0,0.10);
-  --laranja: #065269;
 }
 
 html.theme-light .hero p,
@@ -104,7 +103,7 @@ html.theme-light .cta-final-content p {
 
 html.theme-light .hero h1 em,
 html.theme-light .home-hero h1 em {
-  color: #065269;
+  color: var(--laranja);
   background: rgba(255,255,255,0.65);
   padding: 3px 10px;
   border-radius: 6px;
@@ -1383,12 +1382,41 @@ html.theme-light .hero-logo {
   z-index: 1;
 }
 
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hero-carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  min-width: 0;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.hero-carousel-slide.active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hero-carousel-slide.leaving {
+  opacity: 0;
+}
+
 .home-hero-actions {
   display: flex;
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 16px;
+  padding: 0 16px;
 }
 
 /* ===== HOME SERVICES ===== */
@@ -1562,6 +1590,18 @@ html.theme-light .hero-logo {
 @media (max-width: 599px) {
   .hero-ia {
     min-height: 100dvh;
+  }
+
+  .hero-carousel-slide {
+    padding: 0 16px;
+  }
+
+  .hero-carousel-h1 {
+    font-size: clamp(2.4rem, 6.5vw, 3.2rem);
+  }
+
+  .hero-carousel-p {
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
   }
 }
 
