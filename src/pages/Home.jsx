@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
 import { useCenterHighlight } from '../hooks/useCenterHighlight'
@@ -74,11 +74,17 @@ export default function Home() {
   const [leavingSlide, setLeavingSlide] = useState(null)
   const buttonsRef = useRef(null)
   const prevButtonsRect = useRef(null)
+  const logosRef = useRef(null)
+  const prevLogosRect = useRef(null)
+  const brandRef = useRef(null)
+  const plusRef = useRef(null)
+  const brainRef = useRef(null)
 
   const nextSlide = useCallback(() => {
-    if (buttonsRef.current) {
+    if (buttonsRef.current)
       prevButtonsRect.current = buttonsRef.current.getBoundingClientRect()
-    }
+    if (logosRef.current)
+      prevLogosRect.current = logosRef.current.getBoundingClientRect()
     setLeavingSlide(activeSlide)
     setActiveSlide(prev => (prev + 1) % HERO_SLIDES.length)
   }, [activeSlide])
@@ -90,32 +96,103 @@ export default function Home() {
     }
   }, [leavingSlide])
 
-  useEffect(() => {
-    const el = buttonsRef.current
-    if (!prevButtonsRect.current || !el) {
-      prevButtonsRect.current = null
-      return
-    }
-    const lastRect = el.getBoundingClientRect()
-    const firstRect = prevButtonsRect.current
-    prevButtonsRect.current = null
-    const dy = firstRect.top - lastRect.top
-    if (dy === 0) return
-    el.style.transform = `translateY(${dy}px)`
-    el.style.transition = 'none'
-    requestAnimationFrame(() => {
+  useLayoutEffect(() => {
+    const applyFlip = (el, prevRect) => {
+      if (!el || !prevRect) return
+      const lastRect = el.getBoundingClientRect()
+      const dy = prevRect.top - lastRect.top
+      if (dy === 0) return
+      el.style.transform = `translateY(${dy}px)`
+      el.style.transition = 'none'
       requestAnimationFrame(() => {
-        el.style.transition = 'transform 0.5s ease'
-        el.style.transform = ''
+        requestAnimationFrame(() => {
+          el.style.transition = 'transform 0.5s ease'
+          el.style.transform = ''
+        })
       })
-    })
-    const handler = () => {
-      el.style.transform = ''
-      el.style.transition = ''
-      el.removeEventListener('transitionend', handler)
+      const handler = () => {
+        el.style.transform = ''
+        el.style.transition = ''
+        el.removeEventListener('transitionend', handler)
+      }
+      el.addEventListener('transitionend', handler)
     }
-    el.addEventListener('transitionend', handler)
+
+    const btnRect = prevButtonsRect.current
+    const logoRect = prevLogosRect.current
+    prevButtonsRect.current = null
+    prevLogosRect.current = null
+
+    applyFlip(buttonsRef.current, btnRect)
+    applyFlip(logosRef.current, logoRect)
+
+    if (logoRect) {
+      const brand = brandRef.current
+      const plus = plusRef.current
+      const brain = brainRef.current
+      if (brand && plus && brain) {
+        const s = window.scrollY
+        const brandBase = s * 0.08
+        const plusBase  = s * 0.18
+        const brainBase = s * 0.12
+
+        brand.style.transform = `translateY(${brandBase + 6}px)`
+        plus.style.transform  = `translateY(${plusBase - 4}px)`
+        brain.style.transform = `translateY(${brainBase + 3}px)`
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            brand.style.transition = 'transform 0.5s ease'
+            plus.style.transition  = 'transform 0.5s ease'
+            brain.style.transition = 'transform 0.5s ease'
+            brand.style.transform = `translateY(${brandBase}px)`
+            plus.style.transform  = `translateY(${plusBase}px)`
+            brain.style.transform = `translateY(${brainBase}px)`
+
+            const cleanup = () => {
+              brand.style.transition = ''
+              plus.style.transition  = ''
+              brain.style.transition = ''
+              brand.removeEventListener('transitionend', cleanup)
+            }
+            brand.addEventListener('transitionend', cleanup)
+          })
+        })
+      }
+    }
   }, [activeSlide])
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+
+    const brand = brandRef.current
+    const plus = plusRef.current
+    const brain = brainRef.current
+    if (!brand || !plus || !brain) return
+
+    let rafId = null
+
+    const update = () => {
+      const s = window.scrollY
+      brand.style.transform = `translateY(${s * 0.08}px)`
+      plus.style.transform  = `translateY(${s * 0.18}px)`
+      brain.style.transform = `translateY(${s * 0.12}px)`
+      rafId = null
+    }
+
+    const onScroll = () => {
+      if (rafId === null) rafId = requestAnimationFrame(update)
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    update()
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (rafId !== null) cancelAnimationFrame(rafId)
+    }
+  }, [])
 
   useEffect(() => {
     if (leavingSlide !== null) return
@@ -130,12 +207,30 @@ export default function Home() {
         <div ref={heroBgRef} className="home-hero-bg" />
         <div className="home-hero-overlay" />
         <div className="hero-content">
-          <img
-            className="hero-logo"
-            src="/images/VISTA REAL 360 - logo com slogan PARA FUNDO ESCURO.png"
-            alt="Vista Real 360"
-            loading="eager"
-          />
+          <div ref={logosRef} className="hero-logo-group">
+            <img
+              ref={brandRef}
+              className="hero-logo-brand"
+              src="/images/VISTA REAL 360 - logo com texto - fundo escuro.png"
+              alt="Vista Real 360"
+              loading="eager"
+            />
+            <img
+              ref={plusRef}
+              className="hero-logo-plus"
+              src="/images/sinal de mais - plus.png"
+              alt=""
+              aria-hidden="true"
+              loading="eager"
+            />
+            <img
+              ref={brainRef}
+              className="hero-logo-brain"
+              src="/images/whatsapp-agent-ia-brain.png"
+              alt="WhatsApp"
+              loading="eager"
+            />
+          </div>
           <div
             ref={el => { heroRef.current = el }}
             className="reveal hero-carousel"
